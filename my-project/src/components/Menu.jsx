@@ -1,5 +1,7 @@
+import React from "react";
+
 export const Menu = (props) => {
-    // s\const { onSectionChange, menuOpened, setMenuOpened } = props;
+    const { onSectionChange} = props;
 
     return (
         <>

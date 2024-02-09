@@ -1,22 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { Menu } from './components/Menu'
-
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import About from './components/About';
+import { useEffect, useState } from "react";
+// const Contact = () => {
+//   return <h2>Contact Page</h2>;
+// };
 
 function App() {
-  const [section, setSection] = useState(0);
-  // const [menuOpened, setMenuOpened] = useState(false);
+  const [menuOpened, setMenuOpened] = useState(false);
+
+  useEffect(() => {
+    setMenuOpened(false);
+  });
+
   return (
-    <>
-    <Menu
-          onSectionChange={setSection}
-          // menuOpened={menuOpened}
-          // setMenuOpened={setMenuOpened}
-        />
-    </>
-  )
+    <div className='app'>
+      <Router>
+
+        <Navbar        
+        menuOpened={menuOpened}
+          setMenuOpened={setMenuOpened}/>
+        <Routes>
+          <Route path='/' exact Component={Home}/>
+        </Routes>
+
+        <Footer />
+
+      </Router>
+    </div>
+  );
 }
 
-export default App
+export default App;
